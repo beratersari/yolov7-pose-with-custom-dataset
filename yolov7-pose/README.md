@@ -8,11 +8,11 @@ Pose estimation implimentation is based on [YOLO-Pose](https://arxiv.org/abs/220
 [[Keypoints Labels of MS COCO 2017]](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/coco2017labels-keypoints.zip)
 
 ## Training
-
+Downolad yolov7-w6-person.pt file and add into weights
 [yolov7-w6-person.pt](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6-person.pt)
 
 ``` shell
-python -m torch.distributed.launch --nproc_per_node 8 --master_port 9527 train.py --data data/coco_kpts.yaml --cfg cfg/yolov7-w6-pose.yaml --weights weights/yolov7-w6-person.pt --batch-size 128 --img 960 --kpt-label --sync-bn --device 0,1,2,3,4,5,6,7 --name yolov7-w6-pose --hyp data/hyp.pose.yaml
+python train.py --data data/coco_kpts.yaml --cfg cfg/yolov7-w6-pose.yaml --weights weights/yolov7-w6-person.pt --batch-size 1 --img 960 --kpt-label --sync-bn --device 0 --name yolov7-w6-pose --hyp data/hyp.pose.yaml
 ```
 
 ## Deploy
